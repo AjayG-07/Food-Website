@@ -32,5 +32,5 @@ Perfect for learning full-stack development and showcasing Django skills.
 
 1. **Clone the Repository**
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/AjayG-07/Food-Website>
 cd <repo-folder>
