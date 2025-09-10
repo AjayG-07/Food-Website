@@ -1,0 +1,40 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block content %}
+<div  class="my-3" style="display: flex; flex-wrap: wrap; ">
+    
+    <div class=" mx-3">
+        <div class="card" style="width: 18rem;">
+
+
+
+            {% if data.img %}
+            <img src="/media/{{data.img}}" class="card-img-top" style=" height: 18rem;width: 100%; " alt="Img">
+        {% else %}
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="No Image">
+        {% endif %}
+
+            <!-- <img src="{{food.img}}" class="card-img-top" style=" height: 18rem;width: 100%; " alt="Img"> -->
+            <div class="card-body">
+                <h5 class="card-title">Name: {{data.name}} </h5>
+                <p class="card-text" style="overflow:hidden; height: 2.8rem;width: 100%;"> {{data.disciption }}</p>
+                <p class="card-text"> Prize : {{data.prize}}</p>
+
+                <div  style="display: flex;justify-content: center ; width: 100%;align-items: center;">
+                     <a href="#" style="width: 20vw;" class="btn btn-outline-primary">Cart </a>
+                </div>
+
+                <div  style="display: flex;justify-content: center ; width: 100%;align-items: center;">
+                    <a href="/update/{{ data.id }}" class="btn btn-outline-info m-2">Update</a>
+                    <a href="/delete/{{ data.id }}" class="btn btn-outline-danger m-2">delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+</div>
+
+
+{% endblock %}

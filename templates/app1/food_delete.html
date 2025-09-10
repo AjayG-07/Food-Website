@@ -1,0 +1,15 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h2>Delete Food</h2>
+<h3>Are you sure you want to delete "{{ data.name }}"?</h3>
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-outline-danger" type="submit">Delete</button>
+    <a class="btn btn-outline-info" href="{% url 'list' %}">Cancel</a>
+</form>
+
+
+{% endblock %}

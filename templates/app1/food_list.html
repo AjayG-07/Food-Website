@@ -1,0 +1,33 @@
+{% extends 'app1/admin_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div  class="my-3" style="display: flex; flex-wrap: wrap; ">
+    {% for food in food_data %}  
+    <div class=" mx-3">
+        <div class="card" style="width: 18rem;">
+
+            {% if food.img %}
+            <img src="/media/{{food.img}}" class="card-img-top" style=" height: 18rem;width: 100%; " alt="Img">
+        {% else %}
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="No Image">
+        {% endif %}
+
+          
+            <div class="card-body">
+                <!-- <h5 class="card-title">Name: {{food.name}} </h5>
+                <p class="card-text"> {{food.disciption }}</p> -->
+                <div  style="display: flex;justify-content: center ; width: 100%;align-items: center;">
+                    
+                    <a href="/details/{{ food.id }}" class="btn btn-outline-info m-2">Details</a>
+                    <a href="/food" class="btn btn-outline-info" >Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+
+
+{% endblock %}

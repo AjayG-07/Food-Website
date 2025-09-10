@@ -1,0 +1,24 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container card shadow-lg  my-5" style="width:40vw;height: 80vh;  ">
+        <h1 style="position: relative;bottom: 4px; display: flex;justify-content: center;align-items: center;margin-bottom: 30px;">Admin Sign Up  </h1>
+
+        <form method="POST" >
+            
+            {% csrf_token %}
+            
+            {{form.as_p}}
+
+            <input type="submit" value="Sign Up" class="btn btn-outline-info"
+                style="width: 100%;text-align: center;font-size: 20px;font-weight: 700;">
+        </form>
+
+        <div class="my-2" style="display: flex;justify-content: center ; width: 100%;align-items: center;">  
+            <a href="{% url 'login' %}" class="btn btn-outline-info" > Already , Have an Account? Login Up </a>
+        </div>
+    </div>
+
+    {% endblock %}
+

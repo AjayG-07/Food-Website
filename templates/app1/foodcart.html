@@ -1,0 +1,45 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    {% if cart_data %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Food Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in  cart_data  %}
+                <tr>
+                    <td><img src="{{ item.food.img.url }}" alt="{{ item.food.name }}" width="50"></td>
+                    <td>{{ item.food.name }}</td>               
+                    <td>
+                        <a href="{% url 'decrease_quantity' item.food.id %}" class="btn btn-sm btn-secondary mx-2">-</a>
+                        {{ item.quantity }} 
+                        <a href="{% url 'increase_quantity' item.food.id %}" class="btn btn-sm btn-primary mx-2 ">+</a>
+
+                    
+                    </td>
+                    <td>₹{{ item.food.prize }}</td>
+                    <td>₹{{ item.total_price }}</td>
+                    <td>
+                        <a href="{% url 'remove_from_cart' item.food.id %}" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Total Price: ₹{{ total_foodprice }}</h4>
+        <a href="{% url 'clear_cart' %}" class="btn btn-warning">Clear Cart</a>
+        <a href="/" class="btn btn-warning mx-2">Home</a>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
